@@ -1,0 +1,13 @@
+//Ascii value of given char
+
+#include<iostream>
+using namespace std;
+
+int main(){
+
+    char a;
+    cin>>a;
+
+    cout<<int(a)<<endl;
+
+}
