@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+
 int lengthOfLongestConsecutiveSequence(vector<int> &arr, int N)
 {
 
@@ -24,4 +27,19 @@ int lengthOfLongestConsecutiveSequence(vector<int> &arr, int N)
         }
     }
     return res > 0 ? res : 1;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    int arr[n];
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> arr[i];
+    }
+
+    cout << lengthOfLongestConsecutiveSequence(arr, n);
 }
