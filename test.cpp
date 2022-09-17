@@ -1,23 +1,118 @@
-#include <iostream>
 #include <bits/stdc++.h>
+#include <iostream>
+
 using namespace std;
 
-vector<int> separateNegativeAndPositive(vector<int> &nums)
-{
-    int N = nums.size();
-    int i = 0;
-    int j = 0;
+int main()
 
-    while (i < N)
+{
+
+    int t;
+
+    cin >> t;
+
+    while (t--)
+
     {
-        if (nums[i] < 0)
+
+        string s;
+
+        cin >> s;
+
+        int costa, costb;
+
+        cin >> costa >> costb;
+
+        int n = s.size();
+
+        int min_cost = 0;
+        int f = 0;
+
+        for (int i = 0; i < n / 2; i++)
+
         {
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
-            j = j + 1;
+
+            if (s[i] == '/')
+
+            {
+
+                f = 1;
+
+                if (s[n - i - 1] == '/')
+
+                {
+
+                    min_cost += 2 * (min(costa, costb));
+
+                    if (min(costa, costb) == costa)
+
+                        s[i] = s[n - i - 1] = 'a';
+
+                    else
+
+                        s[i] = s[n - i - 1] = 'a';
+                }
+
+                else
+
+                {
+
+                    if (s[n - i - 1] == 'a')
+
+                    {
+
+                        min_cost += costa;
+
+                        s[i] = 'a';
+                    }
+
+                    else
+
+                    {
+
+                        min_cost += costb;
+
+                        s[i] = 'b';
+                    }
+                }
+            }
+
+            if (s[n - i - 1] == '/')
+
+            {
+
+                f = 1;
+
+                if (s[i] == 'a')
+
+                {
+
+                    min_cost += costa;
+
+                    s[n - i - 1] = 'a';
+                }
+
+                else
+
+                {
+
+                    min_cost += costb;
+
+                    s[n - i - 1] = 'b';
+                }
+            }
         }
-        i += 1;
+
+        string temp = s;
+
+        reverse(s.begin(), s.end());
+
+        if (f == 0 || s != temp)
+
+            cout << "-1\n";
+
+        else
+
+            cout << min_cost << "\n";
     }
-    return nums;
 }
